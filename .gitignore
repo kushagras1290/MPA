@@ -29,6 +29,9 @@ build/
 uploads/
 media/
 
+# Training documentation (local HTML exports)
+training_docs/
+
 # Logs and OS/editor noise
 *.log
 .DS_Store
