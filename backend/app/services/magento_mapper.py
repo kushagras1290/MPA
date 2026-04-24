@@ -37,6 +37,8 @@ class MagentoApiPayloadMapper:
         "offer_type",
         "product_type",
         "dimension_type",
+        "gem_optical_properties",
+        "gem_trade_name_config",
     }
 
     SIMPLE_CUSTOM_ATTRIBUTES = {
@@ -61,6 +63,8 @@ class MagentoApiPayloadMapper:
         "gemstone_benifits_new",
         "specific_gravity",
         "refractive_index",
+        "approx_weight_range",
+        "catalog_uploaded_by",
         "hsn_code",
         "shipping_days",
         "dispatch_days",

@@ -124,6 +124,14 @@ FIELD_RULES: dict[str, FieldRule] = {
     "price_range": FieldRule("price_range", FieldAccess.AUTO),
     "gemstone_benifits_new": FieldRule("gemstone_benifits_new", FieldAccess.SEO),
     "product_category_type": FieldRule("product_category_type", FieldAccess.AUTO, dropdown=True),
+    "approx_weight_range": FieldRule("approx_weight_range", FieldAccess.AUTO, numeric=True),
+    "gem_optical_properties": FieldRule(
+        "gem_optical_properties", FieldAccess.STAFF, dropdown=True
+    ),
+    "gem_trade_name_config": FieldRule(
+        "gem_trade_name_config", FieldAccess.ADMIN, dropdown=True
+    ),
+    "catalog_uploaded_by": FieldRule("catalog_uploaded_by", FieldAccess.ADMIN),
 }
 
 CREATE_REQUIRED_FIELDS: tuple[str, ...] = tuple(

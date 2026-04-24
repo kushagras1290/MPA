@@ -97,6 +97,10 @@ FINAL_MAGENTO_MODEL_COLUMNS: tuple[str, ...] = (
     "price_range",
     "gemstone_benifits_new",
     "product_category_type",
+    "approx_weight_range",
+    "gem_optical_properties",
+    "gem_trade_name_config",
+    "catalog_uploaded_by",
 )
 
 MAGENTO_EXPORT_COLUMNS: tuple[str, ...] = FINAL_MAGENTO_MODEL_COLUMNS

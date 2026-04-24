@@ -8,6 +8,7 @@ from app.domain.gempundit_taxonomy import HSN_BY_GEMSTONE, classify_gemstone
 RATTI_TO_CARAT = Decimal("0.91")
 PRICE_BUCKET = Decimal("500")
 PRICE_PER_CARAT_BUCKET = Decimal("500")
+WEIGHT_RANGE_BUCKET = Decimal("0.25")
 
 
 def _is_blank(value: Any) -> bool:
@@ -149,6 +150,12 @@ def generate_fields(product: dict[str, Any]) -> dict[str, Any]:
     special_price = to_decimal(enriched.get("special_price"))
     if special_price is not None:
         enriched["special_price"] = decimal_to_csv_number(special_price)
+
+    if carat is not None:
+        bucket = (carat / WEIGHT_RANGE_BUCKET).to_integral_value(
+            rounding=ROUND_HALF_UP
+        ) * WEIGHT_RANGE_BUCKET
+        enriched["approx_weight_range"] = f"{bucket.normalize():f}"
 
     if price is not None and carat is not None and carat > 0:
         ppc = quantize(price / carat, "1")
