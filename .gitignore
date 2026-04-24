@@ -32,6 +32,9 @@ media/
 # Training documentation (local HTML exports)
 training_docs/
 
+# Sample data files (local exports, not for version control)
+samples/
+
 # Logs and OS/editor noise
 *.log
 .DS_Store
