@@ -1,11 +1,15 @@
+from contextlib import suppress
 from pathlib import Path
 from tempfile import NamedTemporaryFile
 
+from anyio import Path as AsyncPath
 from fastapi import APIRouter, Depends, File, HTTPException, UploadFile
 from fastapi.responses import FileResponse
 from sqlalchemy.orm import Session
+from starlette.background import BackgroundTask
 
 from app.api.deps import db_session
+from app.core.config import settings
 from app.db.enums import BatchStatus
 from app.db.models import UploadError
 from app.schemas.errors import ValidationIssue
@@ -28,14 +32,25 @@ async def upload_product_file(
     if suffix not in ProductFileReader.SUPPORTED_SUFFIXES:
         raise HTTPException(status_code=400, detail=f"Unsupported file type: {suffix}")
 
+    max_bytes = settings.upload_max_file_mb * 1024 * 1024
+    content = await file.read(max_bytes + 1)
+    if len(content) > max_bytes:
+        raise HTTPException(
+            status_code=413,
+            detail=f"Uploaded file exceeds {settings.upload_max_file_mb} MB limit.",
+        )
+
     with NamedTemporaryFile(delete=False, suffix=suffix) as temp:
-        temp.write(await file.read())
+        temp.write(content)
         path = Path(temp.name)
 
     try:
         products = ProductFileReader().read(path)
     except Exception as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
+    finally:
+        with suppress(FileNotFoundError):
+            await AsyncPath(path).unlink()
 
     batch = StagingService().create_batch(db, file.filename, total_rows=len(products))
     result = ProductValidator().validate_batch(products)
@@ -85,9 +100,15 @@ def download_magento_csv(batch_id: int, db: Session = Depends(db_session)) -> Fi
         raise HTTPException(status_code=404, detail="No staged products found for batch.")
 
     rows = [product.generated_payload for product in products]
-    output_path = Path(f"/tmp/magento_export_batch_{batch_id}.csv")
+    with NamedTemporaryFile(delete=False, suffix=".csv") as temp:
+        output_path = Path(temp.name)
     MagentoCsvExporter().export(rows, output_path)
-    return FileResponse(output_path, filename=f"magento_export_batch_{batch_id}.csv", media_type="text/csv")
+    return FileResponse(
+        output_path,
+        filename=f"magento_export_batch_{batch_id}.csv",
+        media_type="text/csv",
+        background=BackgroundTask(output_path.unlink, missing_ok=True),
+    )
 
 
 @router.get("/{batch_id}/error-report")
@@ -108,10 +129,12 @@ def download_error_report(batch_id: int, db: Session = Depends(db_session)) -> F
         )
         for error in errors
     ]
-    output_path = Path(f"/tmp/error_report_batch_{batch_id}.xlsx")
+    with NamedTemporaryFile(delete=False, suffix=".xlsx") as temp:
+        output_path = Path(temp.name)
     ErrorReportWriter().write_excel(issues, output_path)
     return FileResponse(
         output_path,
         filename=f"error_report_batch_{batch_id}.xlsx",
         media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        background=BackgroundTask(output_path.unlink, missing_ok=True),
     )

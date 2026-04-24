@@ -1,22 +1,30 @@
 import { useState } from "react";
 import { errorReportUrl, magentoCsvUrl, templateDownloadUrl, uploadProductFile } from "../api/client";
+import type { UploadResult } from "../api/client";
 
 export function UploadPage() {
   const [file, setFile] = useState<File | null>(null);
-  const [batchId, setBatchId] = useState<number | null>(null);
-  const [message, setMessage] = useState<string>("");
+  const [result, setResult] = useState<UploadResult | null>(null);
+  const [error, setError] = useState<string>("");
+  const [isUploading, setIsUploading] = useState(false);
 
   async function onUpload() {
     if (!file) return;
-    setMessage("Uploading and validating...");
+    setIsUploading(true);
+    setError("");
+    setResult(null);
     try {
       const response = await uploadProductFile(file);
-      setBatchId(response.batch_id);
-      setMessage(`${response.message} Rows: ${response.total_rows}`);
+      setResult(response);
     } catch (error) {
-      setMessage(error instanceof Error ? error.message : "Upload failed");
+      setError(error instanceof Error ? error.message : "Upload failed");
+    } finally {
+      setIsUploading(false);
     }
   }
+
+  const canDownloadCsv = result?.status === "validated";
+  const canDownloadErrorReport = result !== null && result.status !== "validated";
 
   return (
     <>
@@ -41,23 +49,36 @@ export function UploadPage() {
           onChange={(event) => setFile(event.target.files?.[0] ?? null)}
         />
         <div style={{ marginTop: 16 }}>
-          <button className="primary-button" onClick={onUpload} disabled={!file}>
-            Validate and Stage
+          <button className="primary-button" onClick={onUpload} disabled={!file || isUploading}>
+            {isUploading ? "Validating..." : "Validate and Stage"}
           </button>
         </div>
-        {message && <p>{message}</p>}
+        {error && <p className="alert alert-error">{error}</p>}
+        {result && (
+          <p className={result.status === "validated" ? "alert alert-success" : "alert alert-error"}>
+            {result.message} Rows: {result.total_rows}
+          </p>
+        )}
       </div>
 
-      {batchId && (
+      {result && (
         <div className="card">
           <h3>3. Output</h3>
-          <p>Batch ID: <strong>{batchId}</strong></p>
-          <a className="secondary-button" href={magentoCsvUrl(batchId)} style={{ marginRight: 12 }}>
-            Download Magento CSV
-          </a>
-          <a className="secondary-button" href={errorReportUrl(batchId)}>
-            Download Error Report
-          </a>
+          <p>
+            Batch ID: <strong>{result.batch_id}</strong>
+          </p>
+          <div className="button-row">
+            {canDownloadCsv && (
+              <a className="secondary-button" href={magentoCsvUrl(result.batch_id)}>
+                Download Magento CSV
+              </a>
+            )}
+            {canDownloadErrorReport && (
+              <a className="secondary-button" href={errorReportUrl(result.batch_id)}>
+                Download Error Report
+              </a>
+            )}
+          </div>
         </div>
       )}
     </>

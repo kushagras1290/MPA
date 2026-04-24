@@ -39,7 +39,7 @@ button, input, select, textarea {
   margin-bottom: 10px;
   padding: 12px 14px;
   border: 0;
-  border-radius: 12px;
+  border-radius: 8px;
   background: transparent;
   color: #d1d5db;
   cursor: pointer;
@@ -58,7 +58,7 @@ button, input, select, textarea {
 .card {
   background: white;
   border: 1px solid #e5e7eb;
-  border-radius: 20px;
+  border-radius: 8px;
   padding: 24px;
   box-shadow: 0 10px 25px rgba(15, 23, 42, 0.04);
   margin-bottom: 24px;
@@ -87,7 +87,7 @@ button, input, select, textarea {
   color: white;
   border: 0;
   padding: 12px 16px;
-  border-radius: 12px;
+  border-radius: 8px;
   cursor: pointer;
 }
 
@@ -96,16 +96,80 @@ button, input, select, textarea {
   color: #111827;
   border: 1px solid #d1d5db;
   padding: 12px 16px;
-  border-radius: 12px;
+  border-radius: 8px;
   cursor: pointer;
+}
+
+.primary-button:disabled,
+.secondary-button:disabled,
+.small-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
 }
 
 .input {
   width: 100%;
   padding: 12px 14px;
   border: 1px solid #d1d5db;
-  border-radius: 12px;
+  border-radius: 8px;
   background: white;
+}
+
+.toolbar,
+.button-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.toolbar {
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+
+.small-button {
+  background: #111827;
+  color: white;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 8px 10px;
+  font-size: 13px;
+}
+
+.danger-button {
+  background: #991b1b;
+}
+
+.alert {
+  border-radius: 8px;
+  margin-top: 16px;
+  padding: 12px 14px;
+}
+
+.alert-success {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+.alert-error {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.empty-state {
+  border: 1px dashed #d1d5db;
+  border-radius: 8px;
+  color: #6b7280;
+  margin: 0;
+  padding: 18px;
+}
+
+.table-wrap {
+  overflow-x: auto;
 }
 
 .table {
@@ -124,9 +188,50 @@ button, input, select, textarea {
 .badge {
   display: inline-flex;
   padding: 4px 10px;
-  border-radius: 999px;
+  border-radius: 8px;
   background: #eef2ff;
   color: #3730a3;
   font-size: 12px;
   font-weight: 700;
+}
+
+.form-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.form-grid label {
+  color: #374151;
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.checkbox-row {
+  align-items: center;
+  color: #374151;
+  display: flex;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+@media (max-width: 860px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    padding: 18px;
+  }
+
+  .main {
+    padding: 20px;
+  }
+
+  .grid-3,
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
 }

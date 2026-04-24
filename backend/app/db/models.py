@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import UTC, datetime
 from typing import Any
 
 from sqlalchemy import JSON, Boolean, DateTime, Enum, ForeignKey, Integer, Numeric, String, Text
@@ -14,12 +14,18 @@ from app.db.enums import (
 from app.db.session import Base
 
 
+def utc_now() -> datetime:
+    return datetime.now(UTC)
+
+
 class TimestampMixin:
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow, nullable=False)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=utc_now, nullable=False
+    )
     updated_at: Mapped[datetime] = mapped_column(
-        DateTime,
-        default=datetime.utcnow,
-        onupdate=datetime.utcnow,
+        DateTime(timezone=True),
+        default=utc_now,
+        onupdate=utc_now,
         nullable=False,
     )
 
@@ -55,7 +61,9 @@ class ProductStaging(Base, TimestampMixin):
     __tablename__ = "products_staging"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    batch_id: Mapped[int | None] = mapped_column(ForeignKey("upload_batches.id"), nullable=True, index=True)
+    batch_id: Mapped[int | None] = mapped_column(
+        ForeignKey("upload_batches.id"), nullable=True, index=True
+    )
 
     sku: Mapped[str] = mapped_column(String(80), index=True, nullable=False)
     name: Mapped[str] = mapped_column(String(255), nullable=False)
@@ -127,7 +135,9 @@ class MediaAsset(Base, TimestampMixin):
     __tablename__ = "media_assets"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    product_staging_id: Mapped[int | None] = mapped_column(ForeignKey("products_staging.id"), nullable=True)
+    product_staging_id: Mapped[int | None] = mapped_column(
+        ForeignKey("products_staging.id"), nullable=True
+    )
     sku: Mapped[str] = mapped_column(String(80), index=True)
     asset_type: Mapped[MediaAssetType] = mapped_column(Enum(MediaAssetType))
     original_filename: Mapped[str] = mapped_column(String(255))
@@ -143,7 +153,9 @@ class UploadError(Base, TimestampMixin):
     __tablename__ = "upload_errors"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    batch_id: Mapped[int | None] = mapped_column(ForeignKey("upload_batches.id"), nullable=True, index=True)
+    batch_id: Mapped[int | None] = mapped_column(
+        ForeignKey("upload_batches.id"), nullable=True, index=True
+    )
     product_staging_id: Mapped[int | None] = mapped_column(
         ForeignKey("products_staging.id"), nullable=True, index=True
     )
@@ -153,7 +165,9 @@ class UploadError(Base, TimestampMixin):
     error_type: Mapped[str] = mapped_column(String(80))
     error_message: Mapped[str] = mapped_column(Text)
     suggested_fix: Mapped[str | None] = mapped_column(Text)
-    severity: Mapped[ErrorSeverity] = mapped_column(Enum(ErrorSeverity), default=ErrorSeverity.ERROR)
+    severity: Mapped[ErrorSeverity] = mapped_column(
+        Enum(ErrorSeverity), default=ErrorSeverity.ERROR
+    )
 
 
 class AuditLog(Base, TimestampMixin):

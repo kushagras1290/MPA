@@ -1,4 +1,5 @@
 from pathlib import Path
+from tempfile import NamedTemporaryFile
 
 from app.services.csv_exporter import MagentoCsvExporter
 from app.services.excel_reader import ProductFileReader
@@ -15,7 +16,8 @@ def main() -> None:
     for issue in result.issues[:20]:
         print(issue.model_dump(mode="json"))
 
-    out = Path("/tmp/magento_sample_export.csv")
+    with NamedTemporaryFile(delete=False, suffix=".csv") as temp:
+        out = Path(temp.name)
     MagentoCsvExporter().export(rows, out)
     print(f"Exported: {out}")
 

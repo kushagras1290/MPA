@@ -12,12 +12,25 @@ router = APIRouter()
 @router.get("/product-upload")
 def download_product_upload_template() -> FileResponse:
     dropdowns = {
-        "gemstone": ["Amethyst", "Red Coral", "Emerald", "White Sapphire", "Citrine", "Blue Sapphire", "Ruby"],
+        "gemstone": [
+            "Amethyst",
+            "Red Coral",
+            "Emerald",
+            "White Sapphire",
+            "Citrine",
+            "Blue Sapphire",
+            "Ruby",
+        ],
         "origin": ["Brazil", "Italy", "Zambia", "Sri Lanka (Ceylon)", "Myanmar (Burma)"],
         "shape": ["Oval", "Cushion", "Triangular", "Cylinder", "Octagonal", "Round"],
         "cut": ["Faceted", "Cabochon"],
         "cutting_style": ["Faceted", "Cabochon"],
-        "certification": ["AGR Certified", "ITLGR Certified", "IIGJ Certified", "Free Lab Certificate"],
+        "certification": [
+            "AGR Certified",
+            "ITLGR Certified",
+            "IIGJ Certified",
+            "Free Lab Certificate",
+        ],
         "vendor": ["GP", "Vendor_IN"],
         "return_policy": ["10 Day Money-Back Returns*"],
     }

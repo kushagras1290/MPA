@@ -8,6 +8,7 @@ Create Date: 2026-04-24
 from collections.abc import Sequence
 
 import sqlalchemy as sa
+
 from alembic import op
 
 revision: str = "0001_initial"
@@ -17,15 +18,34 @@ depends_on: str | Sequence[str] | None = None
 
 
 def upgrade() -> None:
-    user_role = sa.Enum("DATA_ENTRY", "CATALOG_MANAGER", "ADMIN", "SEO", "IMAGE_TEAM", name="userrole")
+    user_role = sa.Enum(
+        "DATA_ENTRY", "CATALOG_MANAGER", "ADMIN", "SEO", "IMAGE_TEAM", name="userrole"
+    )
     batch_status = sa.Enum(
-        "CREATED", "PROCESSING", "VALIDATED", "FAILED", "PARTIAL", "APPROVED",
-        "EXPORTED", "PUSHED_TO_MAGENTO", "ROLLED_BACK", name="batchstatus"
+        "CREATED",
+        "PROCESSING",
+        "VALIDATED",
+        "FAILED",
+        "PARTIAL",
+        "APPROVED",
+        "EXPORTED",
+        "PUSHED_TO_MAGENTO",
+        "ROLLED_BACK",
+        name="batchstatus",
     )
     product_stage_status = sa.Enum(
-        "DRAFT", "VALIDATION_FAILED", "VALIDATED", "PENDING_APPROVAL", "REJECTED",
-        "APPROVED", "MAGENTO_DRAFT_CREATED", "PUBLISHED", "UPLOAD_FAILED", "DISABLED",
-        "ARCHIVED", name="productstagestatus"
+        "DRAFT",
+        "VALIDATION_FAILED",
+        "VALIDATED",
+        "PENDING_APPROVAL",
+        "REJECTED",
+        "APPROVED",
+        "MAGENTO_DRAFT_CREATED",
+        "PUBLISHED",
+        "UPLOAD_FAILED",
+        "DISABLED",
+        "ARCHIVED",
+        name="productstagestatus",
     )
     error_severity = sa.Enum("WARNING", "ERROR", "BLOCKER", name="errorseverity")
     media_asset_type = sa.Enum("MAIN", "GALLERY", "CERTIFICATE", "VIDEO", name="mediaassettype")
@@ -38,8 +58,8 @@ def upgrade() -> None:
         sa.Column("password_hash", sa.String(length=255), nullable=False),
         sa.Column("role", user_role, nullable=False),
         sa.Column("is_active", sa.Boolean(), nullable=False),
-        sa.Column("created_at", sa.DateTime(), nullable=False),
-        sa.Column("updated_at", sa.DateTime(), nullable=False),
+        sa.Column("created_at", sa.DateTime(timezone=True), nullable=False),
+        sa.Column("updated_at", sa.DateTime(timezone=True), nullable=False),
     )
     op.create_index("ix_users_email", "users", ["email"], unique=True)
 
@@ -54,8 +74,8 @@ def upgrade() -> None:
         sa.Column("failed_count", sa.Integer(), nullable=False),
         sa.Column("status", batch_status, nullable=False),
         sa.Column("raw_metadata", sa.JSON(), nullable=False),
-        sa.Column("created_at", sa.DateTime(), nullable=False),
-        sa.Column("updated_at", sa.DateTime(), nullable=False),
+        sa.Column("created_at", sa.DateTime(timezone=True), nullable=False),
+        sa.Column("updated_at", sa.DateTime(timezone=True), nullable=False),
     )
 
     op.create_table(
@@ -91,8 +111,8 @@ def upgrade() -> None:
         sa.Column("magento_sku", sa.String(length=80), nullable=True),
         sa.Column("source_payload", sa.JSON(), nullable=False),
         sa.Column("generated_payload", sa.JSON(), nullable=False),
-        sa.Column("created_at", sa.DateTime(), nullable=False),
-        sa.Column("updated_at", sa.DateTime(), nullable=False),
+        sa.Column("created_at", sa.DateTime(timezone=True), nullable=False),
+        sa.Column("updated_at", sa.DateTime(timezone=True), nullable=False),
     )
     op.create_index("ix_products_staging_batch_id", "products_staging", ["batch_id"])
     op.create_index("ix_products_staging_sku", "products_staging", ["sku"])
@@ -101,16 +121,26 @@ def upgrade() -> None:
     op.create_table(
         "product_custom_attributes",
         sa.Column("id", sa.Integer(), primary_key=True),
-        sa.Column("product_staging_id", sa.Integer(), sa.ForeignKey("products_staging.id"), nullable=False),
+        sa.Column(
+            "product_staging_id", sa.Integer(), sa.ForeignKey("products_staging.id"), nullable=False
+        ),
         sa.Column("attribute_code", sa.String(length=120), nullable=False),
         sa.Column("raw_value", sa.Text(), nullable=True),
         sa.Column("mapped_value", sa.Text(), nullable=True),
         sa.Column("magento_option_id", sa.String(length=120), nullable=True),
-        sa.Column("created_at", sa.DateTime(), nullable=False),
-        sa.Column("updated_at", sa.DateTime(), nullable=False),
+        sa.Column("created_at", sa.DateTime(timezone=True), nullable=False),
+        sa.Column("updated_at", sa.DateTime(timezone=True), nullable=False),
     )
-    op.create_index("ix_product_custom_attributes_product_staging_id", "product_custom_attributes", ["product_staging_id"])
-    op.create_index("ix_product_custom_attributes_attribute_code", "product_custom_attributes", ["attribute_code"])
+    op.create_index(
+        "ix_product_custom_attributes_product_staging_id",
+        "product_custom_attributes",
+        ["product_staging_id"],
+    )
+    op.create_index(
+        "ix_product_custom_attributes_attribute_code",
+        "product_custom_attributes",
+        ["attribute_code"],
+    )
 
     op.create_table(
         "attribute_mappings",
@@ -120,16 +150,20 @@ def upgrade() -> None:
         sa.Column("magento_label", sa.String(length=255), nullable=False),
         sa.Column("magento_option_id", sa.String(length=120), nullable=False),
         sa.Column("is_active", sa.Boolean(), nullable=False),
-        sa.Column("created_at", sa.DateTime(), nullable=False),
-        sa.Column("updated_at", sa.DateTime(), nullable=False),
+        sa.Column("created_at", sa.DateTime(timezone=True), nullable=False),
+        sa.Column("updated_at", sa.DateTime(timezone=True), nullable=False),
     )
-    op.create_index("ix_attribute_mappings_attribute_code", "attribute_mappings", ["attribute_code"])
+    op.create_index(
+        "ix_attribute_mappings_attribute_code", "attribute_mappings", ["attribute_code"]
+    )
     op.create_index("ix_attribute_mappings_human_value", "attribute_mappings", ["human_value"])
 
     op.create_table(
         "media_assets",
         sa.Column("id", sa.Integer(), primary_key=True),
-        sa.Column("product_staging_id", sa.Integer(), sa.ForeignKey("products_staging.id"), nullable=True),
+        sa.Column(
+            "product_staging_id", sa.Integer(), sa.ForeignKey("products_staging.id"), nullable=True
+        ),
         sa.Column("sku", sa.String(length=80), nullable=False),
         sa.Column("asset_type", media_asset_type, nullable=False),
         sa.Column("original_filename", sa.String(length=255), nullable=False),
@@ -137,8 +171,8 @@ def upgrade() -> None:
         sa.Column("final_url", sa.Text(), nullable=True),
         sa.Column("magento_media_id", sa.String(length=120), nullable=True),
         sa.Column("upload_status", sa.String(length=32), nullable=False),
-        sa.Column("created_at", sa.DateTime(), nullable=False),
-        sa.Column("updated_at", sa.DateTime(), nullable=False),
+        sa.Column("created_at", sa.DateTime(timezone=True), nullable=False),
+        sa.Column("updated_at", sa.DateTime(timezone=True), nullable=False),
     )
     op.create_index("ix_media_assets_sku", "media_assets", ["sku"])
 
@@ -146,7 +180,9 @@ def upgrade() -> None:
         "upload_errors",
         sa.Column("id", sa.Integer(), primary_key=True),
         sa.Column("batch_id", sa.Integer(), sa.ForeignKey("upload_batches.id"), nullable=True),
-        sa.Column("product_staging_id", sa.Integer(), sa.ForeignKey("products_staging.id"), nullable=True),
+        sa.Column(
+            "product_staging_id", sa.Integer(), sa.ForeignKey("products_staging.id"), nullable=True
+        ),
         sa.Column("row_number", sa.Integer(), nullable=True),
         sa.Column("sku", sa.String(length=80), nullable=True),
         sa.Column("field_name", sa.String(length=120), nullable=True),
@@ -154,8 +190,8 @@ def upgrade() -> None:
         sa.Column("error_message", sa.Text(), nullable=False),
         sa.Column("suggested_fix", sa.Text(), nullable=True),
         sa.Column("severity", error_severity, nullable=False),
-        sa.Column("created_at", sa.DateTime(), nullable=False),
-        sa.Column("updated_at", sa.DateTime(), nullable=False),
+        sa.Column("created_at", sa.DateTime(timezone=True), nullable=False),
+        sa.Column("updated_at", sa.DateTime(timezone=True), nullable=False),
     )
     op.create_index("ix_upload_errors_batch_id", "upload_errors", ["batch_id"])
     op.create_index("ix_upload_errors_product_staging_id", "upload_errors", ["product_staging_id"])
@@ -170,8 +206,8 @@ def upgrade() -> None:
         sa.Column("entity_id", sa.String(length=120), nullable=True),
         sa.Column("old_value", sa.JSON(), nullable=True),
         sa.Column("new_value", sa.JSON(), nullable=True),
-        sa.Column("created_at", sa.DateTime(), nullable=False),
-        sa.Column("updated_at", sa.DateTime(), nullable=False),
+        sa.Column("created_at", sa.DateTime(timezone=True), nullable=False),
+        sa.Column("updated_at", sa.DateTime(timezone=True), nullable=False),
     )
 
 

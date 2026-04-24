@@ -107,26 +107,38 @@ class ProductValidator:
                     )
                 )
 
-        return ValidationResult(valid=not any(i.severity == ErrorSeverity.BLOCKER for i in issues), issues=issues)
+        return ValidationResult(
+            valid=not any(i.severity == ErrorSeverity.BLOCKER for i in issues), issues=issues
+        )
 
-    def validate_product(self, product: dict[str, Any], row_number: int | None = None) -> ValidationResult:
+    def validate_product(
+        self, product: dict[str, Any], row_number: int | None = None
+    ) -> ValidationResult:
         issues: list[ValidationIssue] = []
         sku = product.get("sku")
 
         required_fields = CREATE_REQUIRED_FIELDS
         if _is_loose_gemstone(product):
-            required_fields = tuple(dict.fromkeys((*required_fields, *LOOSE_GEMSTONE_REQUIRED_FIELDS)))
+            required_fields = tuple(
+                dict.fromkeys((*required_fields, *LOOSE_GEMSTONE_REQUIRED_FIELDS))
+            )
 
         for field in required_fields:
             if _is_blank(product.get(field)):
-                severity = ErrorSeverity.BLOCKER if self.mode == ValidationMode.CREATE else ErrorSeverity.WARNING
+                severity = (
+                    ErrorSeverity.BLOCKER
+                    if self.mode == ValidationMode.CREATE
+                    else ErrorSeverity.WARNING
+                )
                 issues.append(
                     ValidationIssue(
                         row_number=row_number,
                         sku=sku,
                         field_name=field,
                         error_type="missing",
-                        error_message=f"`{field}` is required by the {self.mode} validation policy.",
+                        error_message=(
+                            f"`{field}` is required by the {self.mode} validation policy."
+                        ),
                         suggested_fix=f"Provide `{field}` or change product type/category policy.",
                         severity=severity,
                     )
@@ -220,9 +232,15 @@ class ProductValidator:
                     )
                 )
 
-        main_image = product.get("image") or product.get("main_image") or product.get("source_image_path")
+        main_image = (
+            product.get("image") or product.get("main_image") or product.get("source_image_path")
+        )
         if _is_blank(main_image):
-            severity = ErrorSeverity.BLOCKER if self.mode == ValidationMode.CREATE else ErrorSeverity.WARNING
+            severity = (
+                ErrorSeverity.BLOCKER
+                if self.mode == ValidationMode.CREATE
+                else ErrorSeverity.WARNING
+            )
             issues.append(
                 ValidationIssue(
                     row_number=row_number,
@@ -235,4 +253,6 @@ class ProductValidator:
                 )
             )
 
-        return ValidationResult(valid=not any(i.severity == ErrorSeverity.BLOCKER for i in issues), issues=issues)
+        return ValidationResult(
+            valid=not any(i.severity == ErrorSeverity.BLOCKER for i in issues), issues=issues
+        )

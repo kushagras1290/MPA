@@ -12,7 +12,9 @@ router = APIRouter()
 
 
 @router.post("/products/{product_id}/push-draft", response_model=MagentoPushResponse)
-async def push_product_draft(product_id: int, db: Session = Depends(db_session)) -> MagentoPushResponse:
+async def push_product_draft(
+    product_id: int, db: Session = Depends(db_session)
+) -> MagentoPushResponse:
     product = db.get(ProductStaging, product_id)
     if not product:
         raise HTTPException(status_code=404, detail="Product not found")
@@ -23,7 +25,9 @@ async def push_product_draft(product_id: int, db: Session = Depends(db_session))
         for mapping in mappings
     }
 
-    payload = MagentoApiPayloadMapper(option_mappings=option_map).to_payload(product.generated_payload)
+    payload = MagentoApiPayloadMapper(option_mappings=option_map).to_payload(
+        product.generated_payload
+    )
     payload["product"]["status"] = 2  # Always draft/disabled from automation.
 
     try:

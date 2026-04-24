@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from app.api.routes import health, mappings, products, templates, uploads, magento
+from app.api.routes import health, magento, mappings, products, templates, uploads
 
 api_router = APIRouter()
 api_router.include_router(health.router, tags=["health"])

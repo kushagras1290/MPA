@@ -2,7 +2,15 @@ from app.services.validation import ProductValidator
 
 
 def test_validator_blocks_missing_required_fields() -> None:
-    result = ProductValidator().validate_product({"sku": "X", "name": "Test", "attribute_set_id": "Gemstones", "product_type": "Single Stone"}, row_number=2)
+    result = ProductValidator().validate_product(
+        {
+            "sku": "X",
+            "name": "Test",
+            "attribute_set_id": "Gemstones",
+            "product_type": "Single Stone",
+        },
+        row_number=2,
+    )
     assert not result.valid
     assert any(issue.field_name == "gemstone" for issue in result.issues)
     assert any(issue.severity == "blocker" for issue in result.issues)

@@ -1,5 +1,5 @@
 import re
-from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
+from decimal import ROUND_HALF_UP, Decimal, InvalidOperation
 from typing import Any
 
 from app.domain.defaults import DEFAULT_MAGENTO_VALUES
@@ -45,8 +45,10 @@ def generate_url_key(product: dict[str, Any]) -> str:
     gemstone = product.get("gemstone") or product.get("classification") or "gemstone"
     carat = product.get("carat_weight") or product.get("weight_carat")
     sku = product.get("sku")
-    return slugify(" ".join(str(piece) for piece in [gemstone, sku] if piece)) if not carat else slugify(
-        " ".join(str(piece) for piece in [gemstone, carat, "carats", sku] if piece)
+    return (
+        slugify(" ".join(str(piece) for piece in [gemstone, sku] if piece))
+        if not carat
+        else slugify(" ".join(str(piece) for piece in [gemstone, carat, "carats", sku] if piece))
     )
 
 
@@ -59,7 +61,10 @@ def generate_meta_title(product: dict[str, Any]) -> str:
     origin = product.get("origin")
     origin_part = f" from {origin}" if origin else ""
     if carat:
-        return f"Premium Certified {gemstone} for Astrological Use - {carat} Carats ({sku}){origin_part}"
+        return (
+            f"Premium Certified {gemstone} for Astrological Use - "
+            f"{carat} Carats ({sku}){origin_part}"
+        )
     return f"Premium Certified {gemstone} ({sku}){origin_part}"
 
 
@@ -189,7 +194,9 @@ def generate_fields(product: dict[str, Any]) -> dict[str, Any]:
     enriched["description"] = generate_description(enriched)
     enriched["description2"] = generate_description2(enriched)
 
-    main_image = enriched.get("image") or enriched.get("main_image") or enriched.get("source_image_path")
+    main_image = (
+        enriched.get("image") or enriched.get("main_image") or enriched.get("source_image_path")
+    )
     if main_image:
         enriched["image"] = main_image
         enriched.setdefault("small_image", main_image)

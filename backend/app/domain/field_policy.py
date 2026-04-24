@@ -87,13 +87,21 @@ FIELD_RULES: dict[str, FieldRule] = {
     "metal_config": FieldRule("metal_config", FieldAccess.ADMIN, dropdown=True),
     "ideal_design": FieldRule("ideal_design", FieldAccess.ADMIN),
     "price_for_jewelry": FieldRule("price_for_jewelry", FieldAccess.ADMIN, numeric=True),
-    "promotion_baseprice_jewlery": FieldRule("promotion_baseprice_jewlery", FieldAccess.ADMIN, numeric=True),
-    "product_discount_percentage": FieldRule("product_discount_percentage", FieldAccess.AUTO, numeric=True),
-    "promotion_discount_price": FieldRule("promotion_discount_price", FieldAccess.ADMIN, numeric=True),
+    "promotion_baseprice_jewlery": FieldRule(
+        "promotion_baseprice_jewlery", FieldAccess.ADMIN, numeric=True
+    ),
+    "product_discount_percentage": FieldRule(
+        "product_discount_percentage", FieldAccess.AUTO, numeric=True
+    ),
+    "promotion_discount_price": FieldRule(
+        "promotion_discount_price", FieldAccess.ADMIN, numeric=True
+    ),
     "specific_gravity": FieldRule("specific_gravity", FieldAccess.STAFF, numeric=True),
     "refractive_index": FieldRule("refractive_index", FieldAccess.STAFF),
     "show_pricing_table": FieldRule("show_pricing_table", FieldAccess.ADMIN, dropdown=True),
-    "callfor_price_wanto_show": FieldRule("callfor_price_wanto_show", FieldAccess.ADMIN, dropdown=True),
+    "callfor_price_wanto_show": FieldRule(
+        "callfor_price_wanto_show", FieldAccess.ADMIN, dropdown=True
+    ),
     "automatic_video_link": FieldRule("automatic_video_link", FieldAccess.IMAGE),
     "call_for_price_text": FieldRule("call_for_price_text", FieldAccess.ADMIN),
     "calibrated_size_range": FieldRule("calibrated_size_range", FieldAccess.CONDITIONAL),
@@ -110,7 +118,9 @@ FIELD_RULES: dict[str, FieldRule] = {
     "certificate_number1": FieldRule("certificate_number1", FieldAccess.STAFF),
     "verified_certificateimage": FieldRule("verified_certificateimage", FieldAccess.IMAGE),
     "verified_certificateimage1": FieldRule("verified_certificateimage1", FieldAccess.IMAGE),
-    "additional_certification": FieldRule("additional_certification", FieldAccess.STAFF, dropdown=True),
+    "additional_certification": FieldRule(
+        "additional_certification", FieldAccess.STAFF, dropdown=True
+    ),
     "price_range": FieldRule("price_range", FieldAccess.AUTO),
     "gemstone_benifits_new": FieldRule("gemstone_benifits_new", FieldAccess.SEO),
     "product_category_type": FieldRule("product_category_type", FieldAccess.AUTO, dropdown=True),
@@ -124,7 +134,9 @@ LOOSE_GEMSTONE_REQUIRED_FIELDS: tuple[str, ...] = tuple(
     code for code, rule in FIELD_RULES.items() if rule.required_for_loose_gemstone
 )
 
-DROPDOWN_FIELDS: tuple[str, ...] = tuple(code for code, rule in FIELD_RULES.items() if rule.dropdown)
+DROPDOWN_FIELDS: tuple[str, ...] = tuple(
+    code for code, rule in FIELD_RULES.items() if rule.dropdown
+)
 
 NUMERIC_FIELDS: tuple[str, ...] = tuple(code for code, rule in FIELD_RULES.items() if rule.numeric)
 
@@ -133,5 +145,7 @@ NEGATIVE_ALLOWED_FIELDS: tuple[str, ...] = tuple(
 )
 
 NORMAL_STAFF_HIDDEN_FIELDS: tuple[str, ...] = tuple(
-    code for code, rule in FIELD_RULES.items() if rule.access in {FieldAccess.ADMIN, FieldAccess.AUTO}
+    code
+    for code, rule in FIELD_RULES.items()
+    if rule.access in {FieldAccess.ADMIN, FieldAccess.AUTO}
 )

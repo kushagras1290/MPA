@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, cast
 
 import httpx
 
@@ -7,6 +7,13 @@ from app.core.config import settings
 
 class MagentoApiError(RuntimeError):
     pass
+
+
+def _json_object(response: httpx.Response, operation: str) -> dict[str, Any]:
+    body = response.json()
+    if not isinstance(body, dict):
+        raise MagentoApiError(f"Magento {operation} returned a non-object JSON response.")
+    return cast(dict[str, Any], body)
 
 
 class MagentoClient:
@@ -39,8 +46,10 @@ class MagentoClient:
         async with httpx.AsyncClient(timeout=60) as client:
             response = await client.put(url, headers=self.headers, json=payload)
         if response.status_code not in {200, 201}:
-            raise MagentoApiError(f"Magento product upsert failed: {response.status_code} {response.text}")
-        return response.json()
+            raise MagentoApiError(
+                f"Magento product upsert failed: {response.status_code} {response.text}"
+            )
+        return _json_object(response, "product upsert")
 
     async def set_status(self, sku: str, enabled: bool) -> dict[str, Any]:
         status = 1 if enabled else 2
@@ -52,5 +61,7 @@ class MagentoClient:
         async with httpx.AsyncClient(timeout=60) as client:
             response = await client.post(url, headers=self.headers, json=media_payload)
         if response.status_code not in {200, 201}:
-            raise MagentoApiError(f"Magento media upload failed: {response.status_code} {response.text}")
-        return response.json()
+            raise MagentoApiError(
+                f"Magento media upload failed: {response.status_code} {response.text}"
+            )
+        return _json_object(response, "media upload")

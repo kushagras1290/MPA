@@ -92,7 +92,9 @@ class MagentoApiPayloadMapper:
         return ATTRIBUTE_SET_NAME_TO_ID.get(value, settings.magento_default_attribute_set_id)
 
     def _status(self, raw_value: Any) -> int:
-        return STATUS_TO_MAGENTO_API.get(raw_value, STATUS_TO_MAGENTO_API.get(str(raw_value), settings.default_product_status))
+        return STATUS_TO_MAGENTO_API.get(
+            raw_value, STATUS_TO_MAGENTO_API.get(str(raw_value), settings.default_product_status)
+        )
 
     def to_payload(self, product: dict[str, Any]) -> dict[str, Any]:
         enriched = generate_fields(product)
@@ -102,11 +104,17 @@ class MagentoApiPayloadMapper:
             value = enriched.get(code)
             if value is None or value == "":
                 continue
-            custom_attributes.append({"attribute_code": code, "value": self._mapped_value(code, value)})
+            custom_attributes.append(
+                {"attribute_code": code, "value": self._mapped_value(code, value)}
+            )
 
         price = to_decimal(enriched.get("price")) or 0
         qty = to_decimal(enriched.get("qty")) or 0
-        carat = to_decimal(enriched.get("weight_carat")) or to_decimal(enriched.get("carat_weight")) or 0
+        carat = (
+            to_decimal(enriched.get("weight_carat"))
+            or to_decimal(enriched.get("carat_weight"))
+            or 0
+        )
 
         return {
             "product": {
@@ -115,7 +123,9 @@ class MagentoApiPayloadMapper:
                 "attribute_set_id": self._attribute_set_id(enriched.get("attribute_set_id")),
                 "price": float(price),
                 "status": self._status(enriched.get("status")),
-                "visibility": int(enriched.get("visibility") or settings.default_product_visibility),
+                "visibility": int(
+                    enriched.get("visibility") or settings.default_product_visibility
+                ),
                 "type_id": "simple",
                 "weight": float(carat) if carat else settings.default_product_weight,
                 "extension_attributes": {

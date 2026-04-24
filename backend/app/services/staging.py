@@ -1,10 +1,26 @@
+from decimal import Decimal
 from typing import Any
 
 from sqlalchemy.orm import Session
 
 from app.db.enums import BatchStatus, ProductStageStatus
 from app.db.models import ProductStaging, UploadBatch
-from app.services.field_generation import generate_fields
+from app.services.field_generation import generate_fields, to_decimal
+
+
+def _decimal_value(value: Any) -> Decimal | None:
+    return to_decimal(value)
+
+
+def _integer_value(value: Any, default: int = 0) -> int:
+    decimal_value = to_decimal(value)
+    if decimal_value is None:
+        return default
+    return int(decimal_value)
+
+
+def _stock_flag(value: Any) -> bool:
+    return _integer_value(value) > 0
 
 
 class StagingService:
@@ -20,7 +36,9 @@ class StagingService:
         db.refresh(batch)
         return batch
 
-    def stage_products(self, db: Session, batch: UploadBatch, products: list[dict[str, Any]]) -> list[ProductStaging]:
+    def stage_products(
+        self, db: Session, batch: UploadBatch, products: list[dict[str, Any]]
+    ) -> list[ProductStaging]:
         staged: list[ProductStaging] = []
         for product in products:
             enriched = generate_fields(product)
@@ -31,19 +49,19 @@ class StagingService:
                 gemstone=enriched.get("gemstone"),
                 origin=enriched.get("origin"),
                 treatment=enriched.get("treatment"),
-                carat_weight=enriched.get("carat_weight"),
-                weight_ratti=enriched.get("weight_ratti"),
+                carat_weight=_decimal_value(enriched.get("carat_weight")),
+                weight_ratti=_decimal_value(enriched.get("weight_ratti")),
                 shape=enriched.get("shape"),
                 colour=enriched.get("colour"),
                 cut=enriched.get("cut"),
                 dimensions=enriched.get("dimensions"),
                 certification=enriched.get("certification"),
                 certificate_number=enriched.get("certificate_number1"),
-                price=enriched.get("price"),
-                special_price=enriched.get("special_price"),
-                price_per_carat=enriched.get("price_per_carat"),
-                qty=int(enriched.get("qty") or 0),
-                is_in_stock=bool(int(enriched.get("is_in_stock") or 0)),
+                price=_decimal_value(enriched.get("price")),
+                special_price=_decimal_value(enriched.get("special_price")),
+                price_per_carat=_decimal_value(enriched.get("price_per_carat")),
+                qty=_integer_value(enriched.get("qty")),
+                is_in_stock=_stock_flag(enriched.get("is_in_stock")),
                 url_key=enriched.get("url_key"),
                 meta_title=enriched.get("meta_title"),
                 meta_description=enriched.get("meta_description"),

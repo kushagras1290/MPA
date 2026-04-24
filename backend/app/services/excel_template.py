@@ -66,7 +66,10 @@ class ExcelTemplateGenerator:
                 "GP",
                 "133045",
                 "71039949",
-                "0 Business Days (+5 days for typical Jewellery; +14 days for Bracelet/Gold/CZ/Diamond Items)",
+                (
+                    "0 Business Days (+5 days for typical Jewellery; "
+                    "+14 days for Bracelet/Gold/CZ/Diamond Items)"
+                ),
                 0,
                 "10 Day Money-Back Returns*",
                 "/g/p/gp159106-1-220426.jpg",
@@ -93,7 +96,7 @@ class ExcelTemplateGenerator:
 
             if values:
                 col_letter = values_ws.cell(row=1, column=col_idx).column_letter
-                formula = f"=Dropdown_Values!${col_letter}$2:${col_letter}${len(values)+1}"
+                formula = f"=Dropdown_Values!${col_letter}$2:${col_letter}${len(values) + 1}"
                 validation = DataValidation(type="list", formula1=formula, allow_blank=True)
                 ws.add_data_validation(validation)
                 if field in STAFF_TEMPLATE_COLUMNS:
@@ -106,8 +109,13 @@ class ExcelTemplateGenerator:
         instructions["A1"].font = header_font
         instructions["A2"] = "Red headers are required for loose gemstone products."
         instructions["A3"] = "Use SKU-based image naming wherever possible."
-        instructions["A4"] = "Do not manually fill Magento-only fields such as status, tax_class_id, small_image, thumbnail."
-        instructions["A5"] = "Upload products as draft/disabled first, then review before publishing."
+        instructions["A4"] = (
+            "Do not manually fill Magento-only fields such as status, tax_class_id, "
+            "small_image, thumbnail."
+        )
+        instructions["A5"] = (
+            "Upload products as draft/disabled first, then review before publishing."
+        )
 
         wb.save(output_path)
         return output_path

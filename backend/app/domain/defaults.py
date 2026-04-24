@@ -8,7 +8,10 @@ DEFAULT_MAGENTO_VALUES: dict[str, object] = {
     "gem_composition": "Natural",
     "return_policy": "10 Day Money-Back Returns*",
     "dimension_type": "Not Calibrated",
-    "dispatch_days": "0 Business Days (+5 days for typical Jewellery; +14 days for Bracelet/Gold/CZ/Diamond Items)",
+    "dispatch_days": (
+        "0 Business Days (+5 days for typical Jewellery; "
+        "+14 days for Bracelet/Gold/CZ/Diamond Items)"
+    ),
     "shipping_days": 0,
     "show_pricing_table": "No",
     "callfor_price_wanto_show": "No",
