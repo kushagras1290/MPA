@@ -1,0 +1,32 @@
+Magento Product Automation Codebase
+
+Core backend:
+- backend/app/domain/magento_columns.py: exact final 90-column Magento schema
+- backend/app/domain/field_policy.py: field access, required, dropdown, numeric policies
+- backend/app/domain/defaults.py: GemPundit final-model defaults
+- backend/app/domain/gempundit_taxonomy.py: gemstone classification and HSN defaults
+- backend/app/services/excel_reader.py: CSV/XLSX reader with duplicate-header normalization
+- backend/app/services/normalizer.py: source column and null-like value normalization
+- backend/app/services/field_generation.py: ratti, price-per-carat, stock, SEO, descriptions, taxonomy fields
+- backend/app/services/validation.py: create/update/legacy audit validation engine
+- backend/app/services/magento_mapper.py: final CSV row mapper and Magento API payload mapper
+- backend/app/services/csv_exporter.py: final Magento CSV exporter
+- backend/app/services/magento_client.py: Magento REST client
+- backend/app/services/media.py: media asset handling
+- backend/app/tests: pytest coverage for reader, generator, mapper, validation
+
+Frontend:
+- frontend/src: React TypeScript scaffold for upload/review/mapping screens
+
+Docs:
+- docs/ARCHITECTURE.md
+- docs/API_CONTRACT.md
+- docs/FIELD_POLICY.md
+- docs/FINAL_CATALOG_PROFILE.md
+- docs/ROADMAP.md
+
+Samples:
+- samples/Final_Catalog_22-04-2026.csv: earlier 157-col sample provided by user
+- samples/report240426_first_100_rows.csv: first 100 rows from final 90-col model
+- samples/report240426_profile.json: schema/profile summary from final catalogue
+- samples/final_model_export_preview.csv: generated export sanity sample

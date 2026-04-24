@@ -1,0 +1,1713 @@
+{
+  "file": "report240426.csv",
+  "size_bytes": 180574909,
+  "row_count": 121573,
+  "column_count": 90,
+  "columns": [
+    "attribute_set_id",
+    "sku",
+    "name",
+    "meta_title",
+    "url_key",
+    "sku_for_vendor_product",
+    "treatment",
+    "carat_weight",
+    "classification",
+    "cutting_style",
+    "dimensions",
+    "j_colour",
+    "name2",
+    "offers",
+    "vendor_id",
+    "weight_ratti",
+    "shipping_days",
+    "hsn_code",
+    "price",
+    "special_price",
+    "weight_carat",
+    "price_per_carat",
+    "weight_sort1",
+    "status",
+    "tax_class_id",
+    "gemstone",
+    "gem_composition",
+    "shape",
+    "certification",
+    "return_policy",
+    "colour",
+    "cut",
+    "dimension_type",
+    "dispatch_days",
+    "gemstone2",
+    "vendor",
+    "offer_type",
+    "origin",
+    "product_type",
+    "description",
+    "short_description",
+    "comment_explation",
+    "description2",
+    "qty",
+    "is_in_stock",
+    "gemstone3",
+    "image",
+    "small_image",
+    "thumbnail",
+    "invoice_id",
+    "news_from_date",
+    "news_to_date",
+    "stickers",
+    "callfor",
+    "quality_config_gem",
+    "redirect_select_for_quality",
+    "select_for_quality",
+    "mainproduct_forjewlrypage",
+    "gemstone2_type",
+    "price_per_carat_range",
+    "metal_config",
+    "ideal_design",
+    "price_for_jewelry",
+    "promotion_baseprice_jewlery",
+    "product_discount_percentage",
+    "promotion_discount_price",
+    "specific_gravity",
+    "refractive_index",
+    "show_pricing_table",
+    "callfor_price_wanto_show",
+    "automatic_video_link",
+    "call_for_price_text",
+    "calibrated_size_range",
+    "beads_size",
+    "hole",
+    "beads_in_strand",
+    "length_inches",
+    "quality_grade",
+    "strands",
+    "dimension_approx",
+    "arrangement_type",
+    "length_cm",
+    "how_to_wear",
+    "certificate_number1",
+    "verified_certificateimage",
+    "verified_certificateimage1",
+    "additional_certification",
+    "price_range",
+    "gemstone_benifits_new",
+    "product_category_type"
+  ],
+  "duplicate_sku_examples": [],
+  "unique_skus": 121572,
+  "required_missing": {
+    "sku": 2,
+    "name": 0,
+    "gemstone": 660,
+    "origin": 42442,
+    "treatment": 898,
+    "carat_weight": 9815,
+    "shape": 2,
+    "colour": 557,
+    "cut": 977,
+    "dimensions": 47023,
+    "certification": 0,
+    "price": 2,
+    "qty": 0,
+    "image": 5836,
+    "small_image": 5836,
+    "thumbnail": 5813
+  },
+  "nonempty_counts": {
+    "attribute_set_id": 121573,
+    "sku": 121572,
+    "name": 121573,
+    "meta_title": 121558,
+    "url_key": 121573,
+    "sku_for_vendor_product": 75320,
+    "treatment": 120675,
+    "carat_weight": 111758,
+    "classification": 111747,
+    "cutting_style": 75688,
+    "dimensions": 74550,
+    "j_colour": 119389,
+    "name2": 75434,
+    "offers": 70193,
+    "vendor_id": 75579,
+    "weight_ratti": 75798,
+    "shipping_days": 121479,
+    "hsn_code": 121571,
+    "price": 121571,
+    "weight_carat": 112653,
+    "price_per_carat": 78639,
+    "weight_sort1": 121104,
+    "status": 121573,
+    "tax_class_id": 121571,
+    "gemstone": 120913,
+    "gem_composition": 121410,
+    "shape": 121571,
+    "certification": 121573,
+    "return_policy": 121573,
+    "colour": 121016,
+    "cut": 120596,
+    "dimension_type": 76031,
+    "dispatch_days": 121440,
+    "gemstone2": 121557,
+    "vendor": 75650,
+    "offer_type": 116665,
+    "origin": 79131,
+    "product_type": 121413,
+    "description": 121573,
+    "short_description": 121551,
+    "comment_explation": 78650,
+    "description2": 75433,
+    "qty": 121573,
+    "is_in_stock": 121573,
+    "gemstone3": 75566,
+    "image": 115737,
+    "small_image": 115737,
+    "thumbnail": 115760,
+    "news_from_date": 119410,
+    "redirect_select_for_quality": 119001,
+    "gemstone2_type": 95904,
+    "price_per_carat_range": 75798,
+    "promotion_discount_price": 41937,
+    "specific_gravity": 78838,
+    "refractive_index": 78962,
+    "show_pricing_table": 121573,
+    "callfor_price_wanto_show": 121573,
+    "price_range": 75619,
+    "gemstone_benifits_new": 55707,
+    "product_category_type": 91592,
+    "calibrated_size_range": 22214,
+    "certificate_number1": 40408,
+    "verified_certificateimage": 56735,
+    "invoice_id": 66764,
+    "special_price": 33,
+    "how_to_wear": 15231,
+    "quality_config_gem": 45502,
+    "product_discount_percentage": 26403,
+    "stickers": 8429,
+    "quality_grade": 501,
+    "callfor": 3599,
+    "news_to_date": 26,
+    "call_for_price_text": 3271,
+    "automatic_video_link": 6810,
+    "select_for_quality": 34211,
+    "mainproduct_forjewlrypage": 44622,
+    "metal_config": 44493,
+    "ideal_design": 19602,
+    "price_for_jewelry": 23188,
+    "promotion_baseprice_jewlery": 37285,
+    "dimension_approx": 9,
+    "additional_certification": 39,
+    "beads_in_strand": 155,
+    "length_inches": 156,
+    "length_cm": 150,
+    "beads_size": 113,
+    "hole": 129,
+    "strands": 129,
+    "arrangement_type": 129,
+    "verified_certificateimage1": 3
+  },
+  "top_values": {
+    "attribute_set_id": [
+      [
+        "Gemstones",
+        75685
+      ],
+      [
+        "Rings - Config X002",
+        24781
+      ],
+      [
+        "Pendants - Config X002",
+        9726
+      ],
+      [
+        "Bracelets - Config X002",
+        4634
+      ],
+      [
+        "Brooches - Config X002",
+        3075
+      ],
+      [
+        "Necklaces - Config X002",
+        1896
+      ],
+      [
+        "Earrings - Config X002",
+        1256
+      ],
+      [
+        "Gemstones - Config1",
+        249
+      ],
+      [
+        "Default",
+        163
+      ],
+      [
+        "beads-necklace-byquality",
+        99
+      ],
+      [
+        "Gemstone Sets - Config N1",
+        9
+      ]
+    ],
+    "status": [
+      [
+        "Enabled",
+        109877
+      ],
+      [
+        "Disabled",
+        11696
+      ]
+    ],
+    "tax_class_id": [
+      [
+        "Jewellery",
+        48203
+      ],
+      [
+        "Jewellery Semiprecious",
+        46358
+      ],
+      [
+        "Jewellery Sapphire",
+        23736
+      ],
+      [
+        "Jewellery Corals",
+        3202
+      ],
+      [
+        "All Taxable Services",
+        38
+      ],
+      [
+        "Taxable Goods",
+        28
+      ],
+      [
+        "Diamond",
+        5
+      ],
+      [
+        "None",
+        1
+      ]
+    ],
+    "gemstone": [
+      [
+        "Emerald",
+        9898
+      ],
+      [
+        "Ruby",
+        9758
+      ],
+      [
+        "Opal",
+        9641
+      ],
+      [
+        "Blue Sapphire",
+        8064
+      ],
+      [
+        "Yellow Sapphire",
+        7689
+      ],
+      [
+        "Hessonite",
+        5137
+      ],
+      [
+        "Tanzanite",
+        4126
+      ],
+      [
+        "Citrine",
+        3833
+      ],
+      [
+        "Turquoise",
+        3743
+      ],
+      [
+        "Amethyst",
+        3583
+      ],
+      [
+        "Zircon",
+        3375
+      ],
+      [
+        "White Sapphire",
+        3368
+      ],
+      [
+        "Aquamarine",
+        3203
+      ],
+      [
+        "Red Coral",
+        3191
+      ],
+      [
+        "Pearl",
+        3163
+      ],
+      [
+        "Peridot",
+        2825
+      ],
+      [
+        "Tourmaline",
+        2818
+      ],
+      [
+        "Onyx (Chalcedony)",
+        2796
+      ],
+      [
+        "Blue Topaz",
+        2544
+      ],
+      [
+        "Cats Eye",
+        2056
+      ],
+      [
+        "Moonstone",
+        1924
+      ],
+      [
+        "Kyanite",
+        1811
+      ],
+      [
+        "Garnet",
+        1656
+      ],
+      [
+        "Alexandrite",
+        1633
+      ],
+      [
+        "Star Ruby",
+        1524
+      ],
+      [
+        "Pitambari Neelam",
+        1239
+      ],
+      [
+        "Moldavite",
+        1035
+      ],
+      [
+        "Iolite",
+        1007
+      ],
+      [
+        "Pink Sapphire",
+        869
+      ],
+      [
+        "Spinel",
+        775
+      ]
+    ],
+    "gem_composition": [
+      [
+        "Natural",
+        120451
+      ],
+      [
+        "Natural (Cultured - 100% Nacre)",
+        422
+      ],
+      [
+        "Natural (Cultured)",
+        295
+      ],
+      [
+        "Assembled",
+        238
+      ],
+      [
+        "Synthetic",
+        4
+      ]
+    ],
+    "shape": [
+      [
+        "Oval",
+        82174
+      ],
+      [
+        "Octagonal",
+        12593
+      ],
+      [
+        "Cushion",
+        8168
+      ],
+      [
+        "Round",
+        6094
+      ],
+      [
+        "Pear",
+        5101
+      ],
+      [
+        "Triangular",
+        1186
+      ],
+      [
+        "No",
+        1053
+      ],
+      [
+        "Cylinder",
+        861
+      ],
+      [
+        "Rectangle",
+        847
+      ],
+      [
+        "Irregular(Rough)",
+        640
+      ],
+      [
+        "Baroque",
+        607
+      ],
+      [
+        "Marquise",
+        330
+      ],
+      [
+        "Carving",
+        288
+      ],
+      [
+        "Square",
+        270
+      ],
+      [
+        "Mixed Shapes",
+        268
+      ],
+      [
+        "Sugarloaf",
+        262
+      ],
+      [
+        "Heart",
+        241
+      ],
+      [
+        "Fancy",
+        233
+      ],
+      [
+        "Semi Baroque",
+        89
+      ],
+      [
+        "Drop",
+        68
+      ],
+      [
+        "Irregular",
+        57
+      ],
+      [
+        "Spherical",
+        56
+      ],
+      [
+        "Button",
+        38
+      ],
+      [
+        "Rough",
+        14
+      ],
+      [
+        "Hexagonal",
+        12
+      ],
+      [
+        "Circle",
+        7
+      ],
+      [
+        "Pending Classification",
+        6
+      ],
+      [
+        "Semicircle",
+        2
+      ],
+      [
+        "Rhombohedral",
+        1
+      ],
+      [
+        "Moon",
+        1
+      ]
+    ],
+    "certification": [
+      [
+        "Free Lab Certificate",
+        49706
+      ],
+      [
+        "ITLGR Certified",
+        28107
+      ],
+      [
+        "AGR Certified",
+        26071
+      ],
+      [
+        "IGI Certified",
+        4053
+      ],
+      [
+        "GEMTRUE Certified",
+        3828
+      ],
+      [
+        "JBN Certified",
+        2574
+      ],
+      [
+        "IIGJ Certified",
+        2061
+      ],
+      [
+        "IGITL Certified",
+        1011
+      ],
+      [
+        "No",
+        918
+      ],
+      [
+        "GRS Certified",
+        837
+      ],
+      [
+        "ITLGJ Certified",
+        373
+      ],
+      [
+        "SHRI ZAVERI MAHAJAN",
+        366
+      ],
+      [
+        "GSI Certified",
+        356
+      ],
+      [
+        "BELLEROPHON Certified",
+        220
+      ],
+      [
+        "GIA Certified",
+        214
+      ],
+      [
+        "G.I.I Certified",
+        177
+      ],
+      [
+        "ICA GEMLAB Certified",
+        151
+      ],
+      [
+        "AIGS Certified",
+        100
+      ],
+      [
+        "GJSPC Certified",
+        86
+      ],
+      [
+        "ISKON Certified",
+        69
+      ],
+      [
+        "GTL-Jaipur Certified",
+        55
+      ],
+      [
+        "Lotus Certified",
+        36
+      ],
+      [
+        "GJEPC Certified",
+        28
+      ],
+      [
+        "UGTL Certified",
+        23
+      ],
+      [
+        "GUBELIN Certified",
+        21
+      ],
+      [
+        "BGL Certified",
+        17
+      ],
+      [
+        "GGTL Certified",
+        17
+      ],
+      [
+        "C.DUNAIGRE Certified",
+        15
+      ],
+      [
+        "Guild Gemlab Certified",
+        14
+      ],
+      [
+        "GIT Certified",
+        13
+      ]
+    ],
+    "return_policy": [
+      [
+        "10 Day Money-Back Returns*",
+        76146
+      ],
+      [
+        "10 Day Replacements*",
+        45343
+      ],
+      [
+        "30 Day Replacements*",
+        40
+      ],
+      [
+        "No",
+        35
+      ],
+      [
+        "30 Day Money-Back Returns*",
+        6
+      ],
+      [
+        "No Return/No Refund",
+        3
+      ]
+    ],
+    "colour": [
+      [
+        "Blue",
+        23042
+      ],
+      [
+        "Green",
+        17147
+      ],
+      [
+        "Red",
+        13388
+      ],
+      [
+        "White",
+        12593
+      ],
+      [
+        "Yellow",
+        11136
+      ],
+      [
+        "Violet",
+        3489
+      ],
+      [
+        "White, Play Of Color",
+        3286
+      ],
+      [
+        "Brown",
+        3183
+      ],
+      [
+        "Black",
+        2729
+      ],
+      [
+        "Orangish Red",
+        2192
+      ],
+      [
+        "Pink",
+        2172
+      ],
+      [
+        "Yellowish Green",
+        1487
+      ],
+      [
+        "Orange",
+        939
+      ],
+      [
+        "Yellow, Staining",
+        882
+      ],
+      [
+        "Gray",
+        866
+      ],
+      [
+        "Grayish Green",
+        851
+      ],
+      [
+        "Swiss Blue",
+        793
+      ],
+      [
+        "London Blue",
+        792
+      ],
+      [
+        "White, Blue Sheen",
+        772
+      ],
+      [
+        "Pinkish Red",
+        763
+      ],
+      [
+        "Black, Play Of Color",
+        739
+      ],
+      [
+        "Light Blue",
+        684
+      ],
+      [
+        "Purple",
+        683
+      ],
+      [
+        "Red, 6 Ray Star",
+        682
+      ],
+      [
+        "Purplish Red",
+        548
+      ],
+      [
+        "Brownish Gray",
+        486
+      ],
+      [
+        "Greenish Blue",
+        477
+      ],
+      [
+        "Pitambari",
+        475
+      ],
+      [
+        "Orangish Yellow",
+        443
+      ],
+      [
+        "Yellow/Blue",
+        433
+      ]
+    ],
+    "cut": [
+      [
+        "Faceted",
+        85040
+      ],
+      [
+        "Cabochon",
+        33952
+      ],
+      [
+        "Rough",
+        634
+      ],
+      [
+        "Mixed Cuts",
+        400
+      ],
+      [
+        "Carved",
+        313
+      ],
+      [
+        "Checkerboard",
+        121
+      ],
+      [
+        "Mixed Cut",
+        103
+      ],
+      [
+        "Irregular",
+        21
+      ],
+      [
+        "Pending Classification",
+        12
+      ]
+    ],
+    "dimension_type": [
+      [
+        "Not Calibrated",
+        53691
+      ],
+      [
+        "Calibrated",
+        22340
+      ]
+    ],
+    "vendor": [
+      [
+        "GP",
+        67334
+      ],
+      [
+        "Vendor_IN",
+        6057
+      ],
+      [
+        "Vendor_INT",
+        2259
+      ]
+    ],
+    "offer_type": [
+      [
+        "Loose Gemstone",
+        75706
+      ],
+      [
+        "Ring",
+        19926
+      ],
+      [
+        "Pendant",
+        9105
+      ],
+      [
+        "Bracelet",
+        3842
+      ],
+      [
+        "Brooch",
+        3075
+      ],
+      [
+        "Necklace",
+        1896
+      ],
+      [
+        "Engagement Ring",
+        1822
+      ],
+      [
+        "Earrings",
+        1282
+      ],
+      [
+        "Service",
+        8
+      ],
+      [
+        "Chain",
+        3
+      ]
+    ],
+    "origin": [
+      [
+        "Sri Lanka (Ceylon)",
+        18744
+      ],
+      [
+        "Brazil",
+        9963
+      ],
+      [
+        "Thailand",
+        6585
+      ],
+      [
+        "Zambia",
+        5063
+      ],
+      [
+        "Ethiopia",
+        4444
+      ],
+      [
+        "Australia",
+        4394
+      ],
+      [
+        "Tanzania",
+        3854
+      ],
+      [
+        "India",
+        3701
+      ],
+      [
+        "Myanmar (Burma)",
+        3525
+      ],
+      [
+        "Italy",
+        2622
+      ],
+      [
+        "Cambodia",
+        2320
+      ],
+      [
+        "Iran",
+        1947
+      ],
+      [
+        "Africa",
+        1790
+      ],
+      [
+        "Nepal",
+        1423
+      ],
+      [
+        "USA",
+        1272
+      ],
+      [
+        "Mozambique",
+        1174
+      ],
+      [
+        "Czech Republic",
+        1007
+      ],
+      [
+        "Japan",
+        995
+      ],
+      [
+        "Colombia",
+        993
+      ],
+      [
+        "Madagascar",
+        546
+      ],
+      [
+        "Tibet",
+        470
+      ],
+      [
+        "Bolivia",
+        423
+      ],
+      [
+        "Mexico",
+        350
+      ],
+      [
+        "French Polynesia (Tahiti)",
+        346
+      ],
+      [
+        "Afghanistan",
+        259
+      ],
+      [
+        "South America",
+        215
+      ],
+      [
+        "Kenya",
+        172
+      ],
+      [
+        "China",
+        169
+      ],
+      [
+        "Dominican Republic",
+        125
+      ],
+      [
+        "India (Kashmir)",
+        85
+      ]
+    ],
+    "product_type": [
+      [
+        "Single Stone",
+        74632
+      ],
+      [
+        "Ring",
+        24411
+      ],
+      [
+        "Pendant",
+        9743
+      ],
+      [
+        "Bracelet",
+        4651
+      ],
+      [
+        "Brooch",
+        3075
+      ],
+      [
+        "Necklace",
+        1896
+      ],
+      [
+        "Earrings",
+        1282
+      ],
+      [
+        "Rough",
+        570
+      ],
+      [
+        "Pair",
+        455
+      ],
+      [
+        "Custom Jewelry",
+        449
+      ],
+      [
+        "Beads",
+        135
+      ],
+      [
+        "Gemstone Set",
+        57
+      ],
+      [
+        "Necklace Layouts",
+        45
+      ],
+      [
+        "Gemstone Lot",
+        5
+      ],
+      [
+        "Pending Classification",
+        3
+      ],
+      [
+        "Chain",
+        3
+      ],
+      [
+        "Layouts",
+        1
+      ]
+    ],
+    "is_in_stock": [
+      [
+        "1",
+        90140
+      ],
+      [
+        "0",
+        31433
+      ]
+    ],
+    "gemstone2_type": [
+      [
+        "3 - Semi-Precious",
+        34437
+      ],
+      [
+        "2 - Mid-Precious",
+        30210
+      ],
+      [
+        "1 - Precious",
+        30086
+      ],
+      [
+        "0 - Ultra-Luxury",
+        1171
+      ]
+    ],
+    "show_pricing_table": [
+      [
+        "No",
+        118024
+      ],
+      [
+        "Yes",
+        3549
+      ]
+    ],
+    "callfor_price_wanto_show": [
+      [
+        "No",
+        118138
+      ],
+      [
+        "Yes",
+        3435
+      ]
+    ],
+    "product_category_type": [
+      [
+        "MP",
+        67166
+      ],
+      [
+        "P",
+        23364
+      ],
+      [
+        "SP",
+        1059
+      ],
+      [
+        "UP",
+        3
+      ]
+    ],
+    "hsn_code": [
+      [
+        "71039990",
+        16410
+      ],
+      [
+        "71039120",
+        15245
+      ],
+      [
+        "71039949",
+        10077
+      ],
+      [
+        "9999999",
+        9902
+      ],
+      [
+        "71179090",
+        9834
+      ],
+      [
+        "71039130",
+        7497
+      ],
+      [
+        "71039110",
+        6446
+      ],
+      [
+        "71131915",
+        5468
+      ],
+      [
+        "71131919",
+        4710
+      ],
+      [
+        "71131120",
+        4073
+      ],
+      [
+        "71131145",
+        4070
+      ],
+      [
+        "96019040",
+        3188
+      ],
+      [
+        "71039939",
+        3166
+      ],
+      [
+        "71131149",
+        2925
+      ],
+      [
+        "71039951",
+        2421
+      ],
+      [
+        "71131940",
+        2337
+      ],
+      [
+        "71131930",
+        1959
+      ],
+      [
+        "71039911",
+        1777
+      ],
+      [
+        "71012200",
+        1582
+      ],
+      [
+        "71039921",
+        1324
+      ],
+      [
+        "71011020",
+        1231
+      ],
+      [
+        "71039931",
+        923
+      ],
+      [
+        "71039912",
+        787
+      ],
+      [
+        "71039913",
+        721
+      ],
+      [
+        "71039919",
+        674
+      ],
+      [
+        "71039929",
+        609
+      ],
+      [
+        "71031090",
+        606
+      ],
+      [
+        "71039952",
+        582
+      ],
+      [
+        "71039932",
+        385
+      ],
+      [
+        "71039959",
+        257
+      ]
+    ],
+    "dispatch_days": [
+      [
+        "0 Business Days (+5 days for typical Jewellery; +14 days for Bracelet/Gold/CZ/Diamond Items)",
+        65593
+      ],
+      [
+        "7 Business Days",
+        24066
+      ],
+      [
+        "8 Business Days",
+        16348
+      ],
+      [
+        "3 Business Days (+5 days for typical Jewellery; +14 days for Bracelet/Gold/CZ/Diamond Items)",
+        6065
+      ],
+      [
+        "4 Business Days",
+        2525
+      ],
+      [
+        "9 Business Days (+5 days for typical Jewellery; +14 days for Bracelet/Gold/CZ/Diamond Items)",
+        2309
+      ],
+      [
+        "1 Business Days (+5 days for typical Jewellery; +14 days for Bracelet/Gold/CZ/Diamond Items)",
+        1647
+      ],
+      [
+        "6 Business Days",
+        1357
+      ],
+      [
+        "15 Business Days",
+        921
+      ],
+      [
+        "4 Business Days (+5 days for typical Jewellery; +14 days for Bracelet/Gold/CZ/Diamond Items)",
+        192
+      ],
+      [
+        "2 Business Days (+5 days for typical Jewellery; +14 days for Bracelet/Gold/CZ/Diamond Items)",
+        141
+      ],
+      [
+        "5 Business Days (+5 days for typical Jewellery; +14 days for Bracelet/Gold/CZ/Diamond Items)",
+        110
+      ],
+      [
+        "3 Business Days (+5 days for typical Jewellery; +14 days for Bracelet/Gold Items)",
+        91
+      ],
+      [
+        "13 Business Days",
+        27
+      ],
+      [
+        "4 Business Days (+12 Days if Customized Jewellery)",
+        19
+      ],
+      [
+        "7 Business Days (+5 days for typical Jewellery; +14 days for Bracelet/Gold/CZ/Diamond Items)",
+        13
+      ],
+      [
+        "10 Business Days (+5 days for typical Jewellery; +14 days for Bracelet/Gold/CZ/Diamond Items)",
+        5
+      ],
+      [
+        "5 Business Days",
+        3
+      ],
+      [
+        "10 Business Days",
+        3
+      ],
+      [
+        "3 Business Days",
+        2
+      ],
+      [
+        "2 Business Days",
+        1
+      ],
+      [
+        "16 Business Days",
+        1
+      ],
+      [
+        "15 Business Days (+5 days for typical Jewellery; +15 days for Bracelet/Gold Items)",
+        1
+      ]
+    ],
+    "shipping_days": [
+      [
+        "0",
+        65620
+      ],
+      [
+        "7",
+        24082
+      ],
+      [
+        "8",
+        16348
+      ],
+      [
+        "3",
+        6352
+      ],
+      [
+        "4",
+        2544
+      ],
+      [
+        "9",
+        2259
+      ],
+      [
+        "1",
+        1639
+      ],
+      [
+        "6",
+        1357
+      ],
+      [
+        "15",
+        923
+      ],
+      [
+        "2",
+        115
+      ],
+      [
+        "5",
+        111
+      ],
+      [
+        "14",
+        65
+      ],
+      [
+        "10",
+        35
+      ],
+      [
+        "13",
+        27
+      ],
+      [
+        "16",
+        1
+      ],
+      [
+        "12",
+        1
+      ]
+    ],
+    "offers": [
+      [
+        "Express Dispatch",
+        67116
+      ],
+      [
+        "Call for Price",
+        2953
+      ],
+      [
+        "Coming Soon",
+        124
+      ]
+    ],
+    "classification": [
+      [
+        "Ruby",
+        9379
+      ],
+      [
+        "Emerald",
+        9277
+      ],
+      [
+        "Yellow Sapphire",
+        7628
+      ],
+      [
+        "Blue Sapphire",
+        7210
+      ],
+      [
+        "Hessonite",
+        5065
+      ],
+      [
+        "Opal with Fire",
+        4385
+      ],
+      [
+        "Tanzanite",
+        3987
+      ],
+      [
+        "Turquoise",
+        3296
+      ],
+      [
+        "Amethyst",
+        3290
+      ],
+      [
+        "White Sapphire",
+        3216
+      ],
+      [
+        "Red Coral",
+        3142
+      ],
+      [
+        "Peridot",
+        2818
+      ],
+      [
+        "Aquamarine",
+        2802
+      ],
+      [
+        "Citrine",
+        2648
+      ],
+      [
+        "Tourmaline",
+        1931
+      ],
+      [
+        "South Sea Pearl",
+        1738
+      ],
+      [
+        "White Zircon",
+        1726
+      ],
+      [
+        "Alexandrite",
+        1633
+      ],
+      [
+        "Blue Kyanite",
+        1574
+      ],
+      [
+        "Black Opal",
+        1500
+      ],
+      [
+        "Star Ruby",
+        1444
+      ],
+      [
+        "Pitambari Neelam",
+        1231
+      ],
+      [
+        "London Blue Topaz",
+        1096
+      ],
+      [
+        "Swiss Blue Topaz",
+        1052
+      ],
+      [
+        "Moldavite",
+        1027
+      ],
+      [
+        "Iolite",
+        1006
+      ],
+      [
+        "Chrysoberyl Cats Eye",
+        951
+      ],
+      [
+        "Pink Sapphire",
+        856
+      ],
+      [
+        "Royal Blue Sapphire",
+        768
+      ],
+      [
+        "Black Onyx",
+        766
+      ]
+    ]
+  },
+  "distinct_counts_capped": {
+    "attribute_set_id": 11,
+    "status": 2,
+    "tax_class_id": 8,
+    "gemstone": 146,
+    "gem_composition": 5,
+    "shape": 34,
+    "certification": 47,
+    "return_policy": 6,
+    "colour": 536,
+    "cut": 9,
+    "dimension_type": 2,
+    "vendor": 3,
+    "offer_type": 10,
+    "origin": 40,
+    "product_type": 17,
+    "is_in_stock": 2,
+    "gemstone2_type": 4,
+    "show_pricing_table": 2,
+    "callfor_price_wanto_show": 2,
+    "product_category_type": 4,
+    "hsn_code": 50,
+    "dispatch_days": 23,
+    "shipping_days": 16,
+    "offers": 3,
+    "classification": 243
+  },
+  "numeric_stats": {
+    "carat_weight": {
+      "count": 111758,
+      "min": "0",
+      "max": "2445",
+      "bad": 0
+    },
+    "weight_ratti": {
+      "count": 75798,
+      "min": "0",
+      "max": "2716.67",
+      "bad": 0
+    },
+    "shipping_days": {
+      "count": 121479,
+      "min": "0",
+      "max": "16",
+      "bad": 0
+    },
+    "price": {
+      "count": 121571,
+      "min": "0.0000",
+      "max": "1368600.0000",
+      "bad": 0
+    },
+    "special_price": {
+      "count": 33,
+      "min": "750.0000",
+      "max": "27670.0000",
+      "bad": 0
+    },
+    "weight_carat": {
+      "count": 112653,
+      "min": "0.0000",
+      "max": "2445.0000",
+      "bad": 0
+    },
+    "price_per_carat": {
+      "count": 78639,
+      "min": "0.0000",
+      "max": "1709677.0000",
+      "bad": 0
+    },
+    "weight_sort1": {
+      "count": 121104,
+      "min": "0.0000",
+      "max": "244500.0000",
+      "bad": 0
+    },
+    "qty": {
+      "count": 121573,
+      "min": "-3345.0000",
+      "max": "99999986.0000",
+      "bad": 0
+    },
+    "specific_gravity": {
+      "count": 78838,
+      "min": "0",
+      "max": "5.6",
+      "bad": 0
+    },
+    "price_range": {
+      "count": 73161,
+      "min": "0",
+      "max": "3113700",
+      "bad": 2458
+    }
+  }
+}
